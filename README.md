@@ -1,0 +1,9 @@
+Este projeto investiga se autoencoders convolucionais podem reduzir a necessidade de dados anotados na tarefa de detecção de gênero em radiografias de tórax. A abordagem consiste em treinar autoencoders de forma não supervisionada para aprender representações latentes das imagens e, em seguida, usar esses vetores como entrada para um classificador SVM supervisionado.
+
+Foram utilizados três datasets públicos de radiografias (SPR, Montgomery/Shenzhen e NIH ChestX-ray14). Cada dataset foi usado para treinar um autoencoder próprio, resultando em três modelos com diferentes profundidades e tamanhos de vetores latentes. As imagens foram padronizadas para grayscale, 224×224 e normalização em [0,1], garantindo comparabilidade entre bases.
+
+Os experimentos foram realizados em dois cenários: intra-dataset (treino e teste na mesma base) e cross-dataset (treino em uma base e teste em outra). O autoencoder treinado no dataset SPR apresentou o melhor desempenho no próprio domínio, enquanto os testes entre bases mostraram queda de acurácia devido a diferenças entre instituições, protocolos e distribuição de dados. Mesmo assim, os modelos mantiveram desempenho moderado em transferências entre domínios, evidenciando que as representações latentes capturam estruturas anatômicas relevantes.
+
+Os resultados indicam que a combinação Autoencoder + SVM reduz a dependência de grandes volumes de dados rotulados, mantendo desempenho competitivo. As principais limitações incluem o uso de poucas bases, ausência de técnicas de domain adaptation e dependência de SVM linear, sugerindo oportunidades de aprimoramento com modelos variacionais, contrastivos ou estratégias multi-base.
+
+Este trabalho demonstra que representações aprendidas de forma não supervisionada podem apoiar classificadores eficientes em radiografias de tórax, especialmente em cenários onde dados anotados são escassos.
